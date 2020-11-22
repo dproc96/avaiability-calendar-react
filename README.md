@@ -1,6 +1,6 @@
 # Availability Calendar React
 
-This package provides a customizable Calendar component for your React Application to allow users to set availability ranges for certain days.
+This package provides a customizable Calendar component for your React Application to allow users to set availability ranges for certain days. The component uses a state object passed from its parent to store the data. It also allows the user to hover over a given day to see the availability times they have indicated for that day.
 
 ## Basic Setup
 
@@ -25,7 +25,7 @@ function App() {
 export default App;
 ```
 
-![Screenshot](https://user-images.githubusercontent.com/48573314/99914330-b2389280-2cca-11eb-88c2-2c00a8177d5a.png)
+![Screenshot](https://user-images.githubusercontent.com/48573314/99914759-9be00600-2ccd-11eb-816e-ee7bcc124560.png)
 
 ### Saving Availability
 
@@ -42,7 +42,7 @@ const Calendar = CalendarTemplate({
 
 ### Customizing the Calendar
 
-Currently, you are able to customize the primary color, secondary color, font color, font size, and font family:
+Currently, you are able to customize the primary color, secondary color, font color, font size, font family, start time and end time:
 ```javascript
 const Calendar = CalendarTemplate({
     availability,
@@ -51,6 +51,8 @@ const Calendar = CalendarTemplate({
     secondaryColor: "#EEEEEE",
     primaryFontColor: "#444444",
     fontFamily: "Roboto",
-    fontSize: 14
+    fontSize: 14,
+    startTime: "5:00",
+    endTime: "22:00"
 });
 ```

@@ -10,7 +10,9 @@ const CalendarTemplate = ({
   secondaryColor = "#47b2a2",
   fontFamily = "Roboto",
   fontSize = 12,
-  primaryFontColor = "#222222"
+  primaryFontColor = "#222222",
+  startTime = "8:00",
+  endTime = "20:00"
 }) => {
   const theme = createMuiTheme({
     typography: {
@@ -119,46 +121,97 @@ const CalendarTemplate = ({
     }
   });
 
-  const getDefaultTimes = () => [{
-    time: "8:00",
-    available: false
-  }, {
-    time: "9:00",
-    available: false
-  }, {
-    time: "10:00",
-    available: false
-  }, {
-    time: "11:00",
-    available: false
-  }, {
-    time: "12:00",
-    available: false
-  }, {
-    time: "13:00",
-    available: false
-  }, {
-    time: "14:00",
-    available: false
-  }, {
-    time: "15:00",
-    available: false
-  }, {
-    time: "16:00",
-    available: false
-  }, {
-    time: "17:00",
-    available: false
-  }, {
-    time: "18:00",
-    available: false
-  }, {
-    time: "19:00",
-    available: false
-  }, {
-    time: "20:00",
-    available: false
-  }];
+  const getDefaultTimes = () => {
+    const times = [{
+      time: "0:00",
+      available: false
+    }, {
+      time: "1:00",
+      available: false
+    }, {
+      time: "2:00",
+      available: false
+    }, {
+      time: "3:00",
+      available: false
+    }, {
+      time: "4:00",
+      available: false
+    }, {
+      time: "5:00",
+      available: false
+    }, {
+      time: "6:00",
+      available: false
+    }, {
+      time: "7:00",
+      available: false
+    }, {
+      time: "8:00",
+      available: false
+    }, {
+      time: "9:00",
+      available: false
+    }, {
+      time: "10:00",
+      available: false
+    }, {
+      time: "11:00",
+      available: false
+    }, {
+      time: "12:00",
+      available: false
+    }, {
+      time: "13:00",
+      available: false
+    }, {
+      time: "14:00",
+      available: false
+    }, {
+      time: "15:00",
+      available: false
+    }, {
+      time: "16:00",
+      available: false
+    }, {
+      time: "17:00",
+      available: false
+    }, {
+      time: "18:00",
+      available: false
+    }, {
+      time: "19:00",
+      available: false
+    }, {
+      time: "20:00",
+      available: false
+    }, {
+      time: "21:00",
+      available: false
+    }, {
+      time: "22:00",
+      available: false
+    }, {
+      time: "23:00",
+      available: false
+    }, {
+      time: "0:00",
+      available: false
+    }];
+    let include = false;
+    return times.filter(time => {
+      if (time.time === startTime) {
+        include = true;
+      }
+
+      if (time.time === endTime) {
+        include = false;
+        return true;
+      }
+
+      return include;
+    });
+  };
 
   function TimeButton({
     className,
@@ -395,7 +448,8 @@ const CalendarTemplate = ({
     }, /*#__PURE__*/React.createElement(Grid, {
       container: true,
       direction: "row",
-      alignItems: "center"
+      alignItems: "center",
+      justify: "center"
     }, /*#__PURE__*/React.createElement(Grid, {
       item: true
     }, /*#__PURE__*/React.createElement(IconButton, {
@@ -454,6 +508,13 @@ const CalendarTemplate = ({
       item: true
     }, /*#__PURE__*/React.createElement(Grid, {
       container: true,
+      justify: "center",
+      alignItems: "center",
+      wrap: "wrap"
+    }, /*#__PURE__*/React.createElement(Grid, {
+      item: true
+    }, /*#__PURE__*/React.createElement(Grid, {
+      container: true,
       direction: "column",
       alignItems: "center",
       wrap: "wrap"
@@ -478,12 +539,13 @@ const CalendarTemplate = ({
       end: times[i + 1].time,
       handleClick: createTimeHandler(i),
       available: time.available
-    })))))), /*#__PURE__*/React.createElement(Grid, {
+    })))))))), /*#__PURE__*/React.createElement(Grid, {
       item: true
     }, /*#__PURE__*/React.createElement(Grid, {
       container: true,
       direction: "row",
-      alignItems: "center"
+      alignItems: "center",
+      justify: "center"
     }, /*#__PURE__*/React.createElement(Grid, {
       item: true
     }, /*#__PURE__*/React.createElement(Button, {

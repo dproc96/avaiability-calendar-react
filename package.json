@@ -1,6 +1,6 @@
 {
   "name": "availability-calendar-react",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": false,
   "main": "index.js",
   "dependencies": {

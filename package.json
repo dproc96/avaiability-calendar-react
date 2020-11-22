@@ -4,6 +4,7 @@
   "private": false,
   "main": "index.js",
   "dependencies": {
+    "@babel/cli": "^7.12.7",
     "@babel/core": "^7.12.7",
     "@babel/plugin-transform-react-jsx": "^7.12.7",
     "@babel/preset-react": "^7.12.7",
@@ -22,7 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "publish:npm": "rm -rf dist && mkdir dist &&  babel src/components -d dist --copy-files"
   },
   "eslintConfig": {
     "extends": [

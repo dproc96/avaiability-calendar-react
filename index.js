@@ -1,3 +1,3 @@
-import CalendarTemplate from "./src/components/Calendar";
+import CalendarTemplate from "./dist/Calendar";
 
 export default CalendarTemplate;

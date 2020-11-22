@@ -468,7 +468,7 @@ const CalendarTemplate = ({
           alignItems="center"
         >
           <Grid item>
-            <Grid container direction="row" alignItems="center">
+            <Grid container direction="row" alignItems="center" justify="center">
               <Grid item>
                 <IconButton
                   disabled={
@@ -555,54 +555,58 @@ const CalendarTemplate = ({
                 </IconButton>
               </Grid>
               <Grid item>
-                <Grid
-                  container
-                  direction="column"
-                  alignItems="center"
-                  wrap="wrap"
-                >
-                  {times.map(
-                    (time, i) =>
-                      i < times.length - 7 && (
-                        <TimeButton
-                          key={time.time}
-                          className={classes.button}
-                          start={time.time}
-                          end={times[i + 1].time}
-                          handleClick={createTimeHandler(i)}
-                          available={time.available}
-                        />
-                      )
-                  )}
-                </Grid>
-              </Grid>
-              <Grid item>
-                <Grid
-                  container
-                  direction="column"
-                  alignItems="center"
-                  wrap="wrap"
-                >
-                  {times.map(
-                    (time, i) =>
-                      i < times.length - 1 &&
-                      i > 5 && (
-                        <TimeButton
-                          key={time.time}
-                          className={classes.button}
-                          start={time.time}
-                          end={times[i + 1].time}
-                          handleClick={createTimeHandler(i)}
-                          available={time.available}
-                        />
-                      )
-                  )}
+                <Grid container justify="center" alignItems="center" wrap="wrap">
+                  <Grid item>
+                    <Grid
+                      container
+                      direction="column"
+                      alignItems="center"
+                      wrap="wrap"
+                    >
+                      {times.map(
+                        (time, i) =>
+                          i < times.length - 7 && (
+                            <TimeButton
+                              key={time.time}
+                              className={classes.button}
+                              start={time.time}
+                              end={times[i + 1].time}
+                              handleClick={createTimeHandler(i)}
+                              available={time.available}
+                            />
+                          )
+                      )}
+                    </Grid>
+                  </Grid>
+                  <Grid item>
+                    <Grid
+                      container
+                      direction="column"
+                      alignItems="center"
+                      wrap="wrap"
+                    >
+                      {times.map(
+                        (time, i) =>
+                          i < times.length - 1 &&
+                          i > 5 && (
+                            <TimeButton
+                              key={time.time}
+                              className={classes.button}
+                              start={time.time}
+                              end={times[i + 1].time}
+                              handleClick={createTimeHandler(i)}
+                              available={time.available}
+                            />
+                          )
+                      )}
+                    </Grid>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
           <Grid item>
-            <Grid container direction="row" alignItems="center">
+            <Grid container direction="row" alignItems="center" justify="center">
               <Grid item>
                 <Button
                   color="primary"

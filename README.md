@@ -2,7 +2,7 @@
 
 This package provides a customizable Calendar component for your React Application to allow users to set availability ranges for certain days. The component uses a state object passed from its parent to store the data. It also allows the user to hover over a given day to see the availability times they have indicated for that day.
 
-This component is built using Material UI and contains a Material UI ThemeProvider
+This component is built using Material UI and contains a Material UI ThemeProvider.
 
 ## Basic Setup
 
@@ -31,7 +31,22 @@ export default App;
 
 ### Saving Availability
 
-When the user hits "Save Availability" the availability that you passed to the calendar will be updated. If you want to perform an additional action (like an API call) when that happens, you can alter the setAvailability that's passed to the Calendar as such:
+When the user hits "Save Availability" the availability that you passed to the calendar will be updated. It is stored in the following format:
+
+```javascript
+[
+  {
+    start: Date,
+    end: Date
+  },
+  {
+    start: Date,
+    end: Date
+  }
+]
+```
+
+If you want to perform an additional action (like an API call) when that happens, you can alter the setAvailability that's passed to the Calendar as such:
 ```javascript
 const Calendar = CalendarTemplate({
     availability,

@@ -57,6 +57,16 @@ const Calendar = CalendarTemplate({
 });
 ```
 
+### User Experience
+
+As a first time user I will see the blank calendar showing the current month with any days before today disabled. When I click on a day, the color of the day will change to the calendar's primary color and I can start adding times.
+
+When I click on a time, the color will also change to the primary color to indicate availability.
+
+After adding times to a given day, if I click another day that becomes the selected day. Any days where I have indicated availability will appear in the calendar's secondary color. If I hover my cursor over the day it will show the ranges I've indicated.
+
+When I have selected some times, I can click "Add Selected Times to Multiple Days" and until I hit "Done" whenever I click a day it will add the given times to that day automatically (example, I can quickly add 9:00 to 5:00 for every day of the week).
+
 ### Customizing the Calendar
 
 Currently, you are able to customize the primary color, secondary color, font color, font size, font family, start time and end time:

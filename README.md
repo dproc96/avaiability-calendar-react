@@ -2,6 +2,8 @@
 
 This package provides a customizable Calendar component for your React Application to allow users to set availability ranges for certain days. The component uses a state object passed from its parent to store the data. It also allows the user to hover over a given day to see the availability times they have indicated for that day.
 
+This component is built using Material UI and contains a Material UI ThemeProvider
+
 ## Basic Setup
 
 After installing this package, you can import the CalendarTemplate function. You must then create an instance of useState for availability and pass it to the CalendarTemplate as such:

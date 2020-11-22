@@ -1,10 +1,16 @@
 {
   "name": "availability-calendar-react",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": false,
   "main": "index.js",
   "license": "MIT",
-  "keywords": ["react", "availability", "calendar", "material-ui", "calendly"],
+  "keywords": [
+    "react",
+    "availability",
+    "calendar",
+    "material-ui",
+    "calendly"
+  ],
   "homepage": "https://github.com/dproc96/avaiability-calendar-react",
   "bugs": {
     "url": "https://github.com/dproc96/avaiability-calendar-react/issues"

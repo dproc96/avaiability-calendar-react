@@ -3,6 +3,13 @@
   "version": "1.0.5",
   "private": false,
   "main": "index.js",
+  "license": "MIT",
+  "keywords": ["react", "availability", "calendar", "material-ui", "calendly"],
+  "homepage": "https://github.com/dproc96/avaiability-calendar-react",
+  "bugs": {
+    "url": "https://github.com/dproc96/avaiability-calendar-react/issues"
+  },
+  "author": "Dan Proctor",
   "dependencies": {
     "@babel/cli": "^7.12.7",
     "@babel/core": "^7.12.7",

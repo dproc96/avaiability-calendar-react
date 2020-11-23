@@ -51,7 +51,8 @@ const CalendarTemplate = ({
       fontFamily: theme.typography.fontFamily
     },
     popover: {
-      pointerEvents: "none"
+      pointerEvents: "none",
+      fontFamily: theme.typography.fontFamily
     },
     paper: {
       padding: theme.spacing(1)

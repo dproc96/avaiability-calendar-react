@@ -63,6 +63,7 @@ const CalendarTemplate = ({
     },
     popover: {
       pointerEvents: "none",
+      fontFamily: theme.typography.fontFamily,
     },
     paper: {
       padding: theme.spacing(1),

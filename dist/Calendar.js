@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import moment from "moment";
-import { IconButton, Grid, makeStyles, Card, Button, CircularProgress, Popover, ThemeProvider, createMuiTheme } from "@material-ui/core";
+import { IconButton, Grid, makeStyles, Card, Button, CircularProgress, Popover } from "@material-ui/core";
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import { ArrowLeft, ArrowRight } from "@material-ui/icons";
 
 const CalendarTemplate = ({
@@ -14,7 +15,7 @@ const CalendarTemplate = ({
   startTime = "8:00",
   endTime = "20:00"
 }) => {
-  const theme = createMuiTheme({
+  const theme = createTheme({
     typography: {
       fontFamily: `${fontFamily}`,
       fontSize: fontSize
@@ -450,7 +451,7 @@ const CalendarTemplate = ({
       container: true,
       direction: "row",
       alignItems: "center",
-      justify: "center"
+      justifyContent: "center"
     }, /*#__PURE__*/React.createElement(Grid, {
       item: true
     }, /*#__PURE__*/React.createElement(IconButton, {
@@ -509,7 +510,7 @@ const CalendarTemplate = ({
       item: true
     }, /*#__PURE__*/React.createElement(Grid, {
       container: true,
-      justify: "center",
+      justifyContent: "center",
       alignItems: "center",
       wrap: "wrap"
     }, /*#__PURE__*/React.createElement(Grid, {
@@ -546,7 +547,7 @@ const CalendarTemplate = ({
       container: true,
       direction: "row",
       alignItems: "center",
-      justify: "center"
+      justifyContent: "center"
     }, /*#__PURE__*/React.createElement(Grid, {
       item: true
     }, /*#__PURE__*/React.createElement(Button, {

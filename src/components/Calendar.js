@@ -8,9 +8,8 @@ import {
   Button,
   CircularProgress,
   Popover,
-  ThemeProvider,
-  createMuiTheme,
 } from "@material-ui/core";
+import { createTheme, ThemeProvider } from '@material-ui/core/styles'
 import { ArrowLeft, ArrowRight } from "@material-ui/icons";
 
 const CalendarTemplate = ({
@@ -24,7 +23,7 @@ const CalendarTemplate = ({
   startTime = "8:00",
   endTime = "20:00",
 }) => {
-  const theme = createMuiTheme({
+  const theme = createTheme({
     typography: {
       fontFamily: `${fontFamily}`,
       fontSize: fontSize,
@@ -469,7 +468,7 @@ const CalendarTemplate = ({
           alignItems="center"
         >
           <Grid item>
-            <Grid container direction="row" alignItems="center" justify="center">
+            <Grid container direction="row" alignItems="center" justifyContent="center">
               <Grid item>
                 <IconButton
                   disabled={
@@ -556,7 +555,7 @@ const CalendarTemplate = ({
                 </IconButton>
               </Grid>
               <Grid item>
-                <Grid container justify="center" alignItems="center" wrap="wrap">
+                <Grid container justifyContent="center" alignItems="center" wrap="wrap">
                   <Grid item>
                     <Grid
                       container
@@ -607,7 +606,7 @@ const CalendarTemplate = ({
             </Grid>
           </Grid>
           <Grid item>
-            <Grid container direction="row" alignItems="center" justify="center">
+            <Grid container direction="row" alignItems="center" justifyContent="center">
               <Grid item>
                 <Button
                   color="primary"

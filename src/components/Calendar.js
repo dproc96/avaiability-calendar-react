@@ -22,6 +22,7 @@ const CalendarTemplate = ({
   primaryFontColor = "#222222",
   startTime = "8:00",
   endTime = "20:00",
+  interval = 60,
 }) => {
   const momentStarTime = strToMoment(startTime);
   const momentEndTime = strToMoment(endTime);
@@ -136,21 +137,27 @@ const CalendarTemplate = ({
   });
 
   const getDefaultTimes = () => {
-    const hours = fromTo(0, 24);
+    const hours = fromTo(0, 23);
+    const minutes = fromTo(0, 59);
 
-    // Example: 1 => "1:00"
-    const times = hours.map((hour) => ({
-      time: `${hour}:00`,
-      available: false,
-    }));
+    // Generate all possible times at 1 minute intervals
+    const times = hours.map((hour) =>
+      minutes.map((minute) => ({ time: `${hour}:${minute}`, available: false }))
+    );
 
-    return times.filter(({ time }) => {
-      return strToMoment(time).isBetween(
+    return times.flat().filter(({ time }) => {
+      const momentTime = strToMoment(time);
+
+      const between = momentTime.isBetween(
         momentStarTime,
         momentEndTime,
         null,
         "[]"
       );
+
+      const evenlyDivisibleByInterval = momentTime.minute() % interval === 0;
+
+      return between && evenlyDivisibleByInterval;
     });
   };
 

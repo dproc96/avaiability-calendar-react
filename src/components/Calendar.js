@@ -23,6 +23,9 @@ const CalendarTemplate = ({
   startTime = "8:00",
   endTime = "20:00",
 }) => {
+  const momentStarTime = strToMoment(startTime);
+  const momentEndTime = strToMoment(endTime);
+
   const theme = createMuiTheme({
     typography: {
       fontFamily: `${fontFamily}`,
@@ -144,16 +147,13 @@ const CalendarTemplate = ({
     // Add 0:00 to the end of the array; I am not sure why this is necessary
     times.push(ZERO_TIME);
 
-    let include = false;
-    return times.filter((time) => {
-      if (time.time === startTime) {
-        include = true;
-      }
-      if (time.time === endTime) {
-        include = false;
-        return true;
-      }
-      return include;
+    return times.filter(({ time }) => {
+      return strToMoment(time).isBetween(
+        momentStarTime,
+        momentEndTime,
+        null,
+        "[]"
+      );
     });
   };
 
@@ -632,6 +632,8 @@ const CalendarTemplate = ({
 };
 
 const ZERO_TIME = { time: "00:00", available: false };
+// Arbitrary day; used so that we only need to care about hour and minutes
+const STATIC_DAY = moment("1995-12-25");
 
 // generates an array of numbers from start to end, inclusive
 const fromTo = (start, end) => {
@@ -640,6 +642,15 @@ const fromTo = (start, end) => {
     arr.push(i);
   }
   return arr;
+};
+
+const strToMoment = (str) => {
+  const parsedStr = moment(str, "HH:mm");
+
+  const hour = parsedStr.hour();
+  const minute = parsedStr.minute();
+
+  return STATIC_DAY.clone().set({ hour, minute });
 };
 
 export default CalendarTemplate;

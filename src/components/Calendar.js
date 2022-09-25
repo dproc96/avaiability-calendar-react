@@ -133,108 +133,17 @@ const CalendarTemplate = ({
   });
 
   const getDefaultTimes = () => {
-    const times = [
-      {
-        time: "0:00",
-        available: false,
-      },
-      {
-        time: "1:00",
-        available: false,
-      },
-      {
-        time: "2:00",
-        available: false,
-      },
-      {
-        time: "3:00",
-        available: false,
-      },
-      {
-        time: "4:00",
-        available: false,
-      },
-      {
-        time: "5:00",
-        available: false,
-      },
-      {
-        time: "6:00",
-        available: false,
-      },
-      {
-        time: "7:00",
-        available: false,
-      },
-      {
-        time: "8:00",
-        available: false,
-      },
-      {
-        time: "9:00",
-        available: false,
-      },
-      {
-        time: "10:00",
-        available: false,
-      },
-      {
-        time: "11:00",
-        available: false,
-      },
-      {
-        time: "12:00",
-        available: false,
-      },
-      {
-        time: "13:00",
-        available: false,
-      },
-      {
-        time: "14:00",
-        available: false,
-      },
-      {
-        time: "15:00",
-        available: false,
-      },
-      {
-        time: "16:00",
-        available: false,
-      },
-      {
-        time: "17:00",
-        available: false,
-      },
-      {
-        time: "18:00",
-        available: false,
-      },
-      {
-        time: "19:00",
-        available: false,
-      },
-      {
-        time: "20:00",
-        available: false,
-      },
-      {
-        time: "21:00",
-        available: false,
-      },
-      {
-        time: "22:00",
-        available: false,
-      },
-      {
-        time: "23:00",
-        available: false,
-      },
-      {
-        time: "0:00",
-        available: false,
-      },
-    ];
+    const hours = fromTo(0, 23);
+
+    // Example: 1 => "1:00"
+    const times = hours.map((hour) => ({
+      time: `${hour}:00`,
+      available: false,
+    }));
+
+    // Add 0:00 to the end of the array; I am not sure why this is necessary
+    times.push(ZERO_TIME);
+
     let include = false;
     return times.filter((time) => {
       if (time.time === startTime) {
@@ -720,6 +629,17 @@ const CalendarTemplate = ({
       );
     }
   };
+};
+
+const ZERO_TIME = { time: "00:00", available: false };
+
+// generates an array of numbers from start to end, inclusive
+const fromTo = (start, end) => {
+  const arr = [];
+  for (let i = start; i <= end; i++) {
+    arr.push(i);
+  }
+  return arr;
 };
 
 export default CalendarTemplate;

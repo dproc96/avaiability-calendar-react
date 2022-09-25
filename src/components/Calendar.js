@@ -185,9 +185,9 @@ const CalendarTemplate = ({
     const output = {};
     for (let range of availability) {
       let start = moment(range.start);
-      let startTime = `${start.format("H")}:${start.format("mm")}`;
+      let startStr = `${start.format("H")}:${start.format("mm")}`;
       let end = moment(range.end);
-      let endTime = `${end.format("H")}:${end.format("mm")}`;
+      let endStr = `${end.format("H")}:${end.format("mm")}`;
       let year = Number(start.format("YYYY"));
       let month = start.format("MMMM");
       let day = Number(start.format("D"));
@@ -195,12 +195,12 @@ const CalendarTemplate = ({
       let i = 0;
       while (
         i < output[year][month][day].length &&
-        output[year][month][day][i].time !== startTime
+        output[year][month][day][i].time !== startStr
       )
         i++;
       while (
         i < output[year][month][day].length &&
-        output[year][month][day][i].time !== endTime
+        output[year][month][day][i].time !== endStr
       ) {
         output[year][month][day][i].available = true;
         i++;

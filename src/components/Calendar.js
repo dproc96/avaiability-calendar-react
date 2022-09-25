@@ -136,16 +136,13 @@ const CalendarTemplate = ({
   });
 
   const getDefaultTimes = () => {
-    const hours = fromTo(0, 23);
+    const hours = fromTo(0, 24);
 
     // Example: 1 => "1:00"
     const times = hours.map((hour) => ({
       time: `${hour}:00`,
       available: false,
     }));
-
-    // Add 0:00 to the end of the array; I am not sure why this is necessary
-    times.push(ZERO_TIME);
 
     return times.filter(({ time }) => {
       return strToMoment(time).isBetween(
@@ -631,10 +628,6 @@ const CalendarTemplate = ({
   };
 };
 
-const ZERO_TIME = { time: "00:00", available: false };
-// Arbitrary day; used so that we only need to care about hour and minutes
-const STATIC_DAY = moment("1995-12-25");
-
 // generates an array of numbers from start to end, inclusive
 const fromTo = (start, end) => {
   const arr = [];
@@ -645,12 +638,7 @@ const fromTo = (start, end) => {
 };
 
 const strToMoment = (str) => {
-  const parsedStr = moment(str, "HH:mm");
-
-  const hour = parsedStr.hour();
-  const minute = parsedStr.minute();
-
-  return STATIC_DAY.clone().set({ hour, minute });
+  return moment(str, "HH:mm");
 };
 
 export default CalendarTemplate;

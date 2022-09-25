@@ -9,7 +9,7 @@ import {
   CircularProgress,
   Popover,
 } from "@material-ui/core";
-import { createTheme, ThemeProvider } from '@material-ui/core/styles'
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { ArrowLeft, ArrowRight } from "@material-ui/icons";
 
 const CalendarTemplate = ({
@@ -23,7 +23,7 @@ const CalendarTemplate = ({
   startTime = "8:00",
   endTime = "20:00",
 }) => {
-  const theme = createTheme({
+  const theme = createMuiTheme({
     typography: {
       fontFamily: `${fontFamily}`,
       fontSize: fontSize,
@@ -236,7 +236,7 @@ const CalendarTemplate = ({
       },
     ];
     let include = false;
-    return times.filter(time => {
+    return times.filter((time) => {
       if (time.time === startTime) {
         include = true;
       }
@@ -245,7 +245,7 @@ const CalendarTemplate = ({
         return true;
       }
       return include;
-    })
+    });
   };
 
   function TimeButton({ className, start, end, available, handleClick }) {
@@ -468,7 +468,12 @@ const CalendarTemplate = ({
           alignItems="center"
         >
           <Grid item>
-            <Grid container direction="row" alignItems="center" justifyContent="center">
+            <Grid
+              container
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+            >
               <Grid item>
                 <IconButton
                   disabled={
@@ -555,7 +560,12 @@ const CalendarTemplate = ({
                 </IconButton>
               </Grid>
               <Grid item>
-                <Grid container justifyContent="center" alignItems="center" wrap="wrap">
+                <Grid
+                  container
+                  justifyContent="center"
+                  alignItems="center"
+                  wrap="wrap"
+                >
                   <Grid item>
                     <Grid
                       container
@@ -606,7 +616,12 @@ const CalendarTemplate = ({
             </Grid>
           </Grid>
           <Grid item>
-            <Grid container direction="row" alignItems="center" justifyContent="center">
+            <Grid
+              container
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+            >
               <Grid item>
                 <Button
                   color="primary"

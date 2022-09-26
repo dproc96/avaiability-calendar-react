@@ -373,6 +373,11 @@ const CalendarTemplate = ({
       setAnchorEl(null);
       setPopoverContent(null);
     };
+
+    const midPt = Math.floor(times.length / 2);
+    const timesFirstHalf = times.slice(0, midPt);
+    const timesSecondHalf = times.slice(midPt, times.length);
+
     return (
       <ThemeProvider theme={theme}>
         <Grid
@@ -487,9 +492,9 @@ const CalendarTemplate = ({
                       alignItems="center"
                       wrap="wrap"
                     >
-                      {times.map(
+                      {timesFirstHalf.map(
                         (time, i) =>
-                          i < times.length - 7 && (
+                          i < times.length - 1 && (
                             <TimeButton
                               key={time.time}
                               className={classes.button}
@@ -509,20 +514,23 @@ const CalendarTemplate = ({
                       alignItems="center"
                       wrap="wrap"
                     >
-                      {times.map(
-                        (time, i) =>
-                          i < times.length - 1 &&
-                          i > 5 && (
+                      {timesSecondHalf.map((time, i) => {
+                        // We are iterating over the second half of `times` so we need to offset the index by the length of the first half
+                        const adjustedIdx = timesFirstHalf.length + i;
+
+                        return (
+                          adjustedIdx < times.length - 1 && (
                             <TimeButton
                               key={time.time}
                               className={classes.button}
                               start={time.time}
-                              end={times[i + 1].time}
-                              handleClick={createTimeHandler(i)}
+                              end={times[adjustedIdx + 1].time}
+                              handleClick={createTimeHandler(adjustedIdx)}
                               available={time.available}
                             />
                           )
-                      )}
+                        );
+                      })}
                     </Grid>
                   </Grid>
                 </Grid>

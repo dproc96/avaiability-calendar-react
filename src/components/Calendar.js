@@ -22,7 +22,7 @@ const CalendarTemplate = ({
   primaryFontColor = "#222222",
   startTime = "8:00",
   endTime = "20:00",
-  interval = 60,
+  interval = 60, // in minutes, must be >= 1 and <= 60
 }) => {
   const momentStarTime = strToMoment(startTime);
   const momentEndTime = strToMoment(endTime);
@@ -137,28 +137,29 @@ const CalendarTemplate = ({
   });
 
   const getDefaultTimes = () => {
-    const hours = fromTo(0, 23);
-    const minutes = fromTo(0, 59);
+    const times = [];
 
-    // Generate all possible times at 1 minute intervals
-    const times = hours.map((hour) =>
-      minutes.map((minute) => ({ time: `${hour}:${minute}`, available: false }))
-    );
+    let currTime = momentStarTime;
 
-    return times.flat().filter(({ time }) => {
-      const momentTime = strToMoment(time);
-
-      const between = momentTime.isBetween(
+    while (true) {
+      const isBetween = currTime.isBetween(
         momentStarTime,
         momentEndTime,
-        null,
+        undefined,
         "[]"
       );
 
-      const evenlyDivisibleByInterval = momentTime.minute() % interval === 0;
+      if (isBetween) {
+        const time = currTime.format("HH:mm");
+        times.push({ time, available: false });
 
-      return between && evenlyDivisibleByInterval;
-    });
+        currTime = currTime.clone().add(interval, "minutes");
+      } else {
+        break;
+      }
+    }
+
+    return times;
   };
 
   function TimeButton({ className, start, end, available, handleClick }) {
@@ -633,15 +634,6 @@ const CalendarTemplate = ({
       );
     }
   };
-};
-
-// generates an array of numbers from start to end, inclusive
-const fromTo = (start, end) => {
-  const arr = [];
-  for (let i = start; i <= end; i++) {
-    arr.push(i);
-  }
-  return arr;
 };
 
 const strToMoment = (str) => {
